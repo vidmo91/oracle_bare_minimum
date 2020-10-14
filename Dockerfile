@@ -1,8 +1,21 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
 FROM python:3.8
 
+
+# select work directory
+ADD . /app
+WORKDIR /app
+
 # instal libaio and instant client 
 RUN apt-get update && apt-get -y install libaio-dev
+
+#### automatic download
+#RUN apt-get -y install wget
+#RUN apt-get -y install unzip
+#RUN mkdir /app/lib && cd /app/lib
+#RUN wget https://download.oracle.com/otn_software/linux/instantclient/19800/instantclient-basic-linux.x64-19.8.0.0.0dbru.zip
+#RUN unzip instantclient-basic-linux.x64-19.8.0.0.0dbru.zip
+#RUN cd /app
 
 #select approperiate instant client version
 #RUN echo /app/lib/instantclient_11_2 > /etc/ld.so.conf.d/oracle.config && ldconfig
@@ -10,9 +23,7 @@ RUN apt-get update && apt-get -y install libaio-dev
 RUN echo /app/lib/instantclient_19_8 > /etc/ld.so.conf.d/oracle.config && ldconfig
 ENV LD_LIBRARY_PATH=/app/lib/instantclient_19_8:$LD_LIBRARY_PATH
 
-# select work directory
-ADD . /app
-WORKDIR /app
+
 
 # uncomment for instantclient_11_2
 #RUN ln -s /app/lib/instantclient_11_2/libocci.so.11.1 /app/lib/instantclient_11_2/libocci.so
