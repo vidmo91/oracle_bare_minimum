@@ -12,9 +12,9 @@ RUN apt-get update && apt-get -y install libaio-dev
 #### automatic download
 #RUN apt-get -y install wget
 #RUN apt-get -y install unzip
-#RUN mkdir /app/lib && cd /app/lib
-#RUN wget https://download.oracle.com/otn_software/linux/instantclient/19800/instantclient-basic-linux.x64-19.8.0.0.0dbru.zip
-#RUN unzip instantclient-basic-linux.x64-19.8.0.0.0dbru.zip
+#RUN wget https://download.oracle.com/otn_software/linux/instantclient/19800/instantclient-basic-linux.x64-19.8.0.0.0dbru.zip 
+#RUN unzip instantclient-basic-linux.x64-19.8.0.0.0dbru.zip -d /app/lib 
+#RUN rm instantclient*
 #RUN cd /app
 
 #select approperiate instant client version
